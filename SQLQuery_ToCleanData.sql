@@ -1,0 +1,12 @@
+ALTER TABLE titanic_raw 
+ALTER COLUMN boat TYPE TEXT;
+
+ALTER TABLE titanic_raw
+ALTER COLUMN Age TYPE NUMERIC USING NULLIF(Age, '');
+
+ALTER TABLE titanic_raw
+ALTER COLUMN Fare TYPE NUMERIC USING NULLIF(Fare, '');
+
+UPDATE titanic_raw
+SET Age = NULL
+WHERE Age = ''
